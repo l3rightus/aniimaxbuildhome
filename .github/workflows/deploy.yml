@@ -2,6 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
+    branches:
+      - main  # Keep https://l3rightus.github.io/aniimaxbuildhome/ up to date with main
     tags:
       - 'v*'  # Trigger on version tags like v0.3.0, v1.0.0, etc.
   workflow_dispatch:

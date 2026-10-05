@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aniimax - Aniimo Production Optimizer</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Typeset on opening the Math modal (see showMath), so i18n.js can swap its language first. -->
+    <script>window.MathJax = { startup: { typeset: false } };</script>
+    <script src="i18n.js" defer></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
@@ -15,6 +18,8 @@
             <button class="toggle-button" onclick="showMath()" id="mathToggle">math</button>
             <button class="toggle-button" onclick="showHelp()" id="helpToggle">help</button>
             <button class="toggle-button" onclick="toggleTheme()" id="themeToggle">light</button>
+            <button class="toggle-button" onclick="toggleLanguage()" id="langToggle" data-i18n-skip>ไทย</button>
+            <a class="toggle-button" href="https://github.com/l3rightus/aniimaxbuildhome" target="_blank" rel="noopener" title="View the source code on GitHub">github</a>
         </div>
     </header>
     <p class="subtitle">aniimo homeland production optimizer</p>
@@ -284,7 +289,7 @@
                                 <label class="layout-whole"><input type="checkbox" id="layout-whole"> Show the whole homeland</label>
                                 <label class="layout-whole"><input type="checkbox" id="layout-sim-on" checked> Simulate</label>
                             </span>
-                            <span class="layout-sim" id="layout-sim" hidden><span id="layout-clock">0h 00m</span><button type="button" class="toggle-button small" id="layout-replay">Replay</button></span>
+                            <span class="layout-sim" id="layout-sim" hidden><span id="layout-clock" data-i18n-skip>0h 00m</span><button type="button" class="toggle-button small" id="layout-replay">Replay</button></span>
                         </div>
                         <div class="layout-diagram" id="layout-diagram"></div>
                     </div>
@@ -365,7 +370,7 @@
         </main>
 
         <footer>
-            <p>aniimax v<span id="version">-</span> | <a href="https://github.com/ae-bii/aniimax" target="_blank">github</a></p>
+            <p>aniimax v<span id="version">-</span> | <a href="https://github.com/l3rightus/aniimaxbuildhome" target="_blank" rel="noopener" title="View the source code on GitHub">github</a></p>
             <p class="footer-note">Unofficial fan-made tool. Not affiliated with or endorsed by the makers of Aniimo.</p>
             <p class="footer-note">Your inputs are saved in your browser and never sent anywhere.</p>
         </footer>
@@ -393,7 +398,7 @@
                 <h2>How It Works</h2>
                 <button class="close-button" onclick="closeMath()">&times;</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" data-i18n-swap="math">
                 <h3>The Model</h3>
                 <p>Every plan is one mixed-integer program covering every recipe and facility at once, solved with <a href="https://highs.dev" target="_blank" rel="noopener">HiGHS</a>. Each recipe your facility levels and modules unlock, \(r\), gets a rate \(b_r\) (batches per second) and a whole number of units \(u_r\) set to it: plots for a crop, machines for a processed item.</p>
                 <div class="math-block">\[ \max \ \sum_i p_i \, s_i \;-\; \sum_r c_r \, b_r \]</div>
@@ -445,7 +450,7 @@
                 <h2>How to Use</h2>
                 <button class="close-button" onclick="closeHelp()">&times;</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" data-i18n-swap="help">
                 <h3>1. Tell It What You've Built</h3>
                 <p><strong>Simple</strong>: pick your RV level, and the calculator assumes you've built and upgraded everything that level allows. <strong>Advanced</strong>: set the count and level of every facility and upgrade module yourself. In Advanced, "Fill from RV level" sets everything to what an RV level allows, as a starting point.</p>
                 <p>Under <strong>Recipes</strong>, special recipes (Rose Shortbread, Potato Kvass and a few others) take a rare currency to unlock, so plans leave them out until you tick the ones you have.</p>
@@ -506,7 +511,7 @@
         window.showMath = function() {
             document.getElementById('mathModal').classList.add('show');
             // Trigger MathJax to render
-            if (window.MathJax) {
+            if (window.MathJax && MathJax.typesetPromise) {
                 MathJax.typesetPromise();
             }
         }

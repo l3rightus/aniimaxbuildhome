@@ -8,7 +8,14 @@ Updated for the full release, with a joint LP-based facility-allocation engine f
 
 ## Try It Online
 
-**[Launch Aniimax Web App](https://ae-bii.github.io/aniimax/)** - No installation required!
+**[Launch Aniimax Web App](https://l3rightus.github.io/aniimaxbuildhome/)** - No installation required!
+
+- Source code: **[github.com/l3rightus/aniimaxbuildhome](https://github.com/l3rightus/aniimaxbuildhome)** (forked from [ae-bii/aniimax](https://github.com/ae-bii/aniimax))
+- **ภาษาไทย / Thai:** the web app is available in English and Thai. Press **ไทย** in the top-right corner to switch (the choice is remembered; a browser set to Thai opens in Thai). Game names such as facilities, items and abilities stay in English so they match the game.
+
+### วิธีเปิดใช้งาน (ภาษาไทย)
+
+เปิด **[เว็บแอป Aniimax](https://l3rightus.github.io/aniimaxbuildhome/)** แล้วกดปุ่ม **ไทย** ที่มุมขวาบนเพื่อเปลี่ยนเป็นภาษาไทย ปุ่ม **github** ที่มุมขวาบนและท้ายหน้าเว็บจะพาไปยังหน้า GitHub ของโปรเจกต์นี้
 
 ## Features
 
@@ -48,8 +55,8 @@ Updated for the full release, with a joint LP-based facility-allocation engine f
 ### Building from Source
 
 ```bash
-git clone https://github.com/ae-bii/aniimax.git
-cd aniimax
+git clone https://github.com/l3rightus/aniimaxbuildhome.git
+cd aniimaxbuildhome
 cargo build --release
 ```
 
@@ -153,7 +160,7 @@ Options:
   -V, --version                      Print version
 ```
 
-> **CLI coverage:** the CLI exposes the 10 facilities listed above; any facility without a flag counts as not owned. The CLI also doesn't model environment coverage, so it can recommend a crop that needs a Heat Furnace, Cooling Unit or Sunlamp you don't own. For full coverage, use the [web app](https://ae-bii.github.io/aniimax/) instead.
+> **CLI coverage:** the CLI exposes the 10 facilities listed above; any facility without a flag counts as not owned. The CLI also doesn't model environment coverage, so it can recommend a crop that needs a Heat Furnace, Cooling Unit or Sunlamp you don't own. For full coverage, use the [web app](https://l3rightus.github.io/aniimaxbuildhome/) instead.
 
 ## Example Output
 

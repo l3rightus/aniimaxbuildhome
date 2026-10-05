@@ -78,7 +78,14 @@ header h1 {
 
 .header-buttons {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 1rem;
+}
+
+/* Thai text needs a little more line height for its stacked vowel and tone marks. */
+:lang(th) body {
+    line-height: 1.7;
 }
 
 .toggle-button {
