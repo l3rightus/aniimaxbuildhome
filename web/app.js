@@ -2036,9 +2036,11 @@ function addSkipFromInput() {
     const input = document.getElementById('skip-input');
     const text = input.value.trim().toLowerCase();
     if (!text) return;
-    let match = recipeIndex.find(r => recipeLabel(r).toLowerCase() === text);
+    // In Thai (see i18n.js), a recipe can also be typed by its Thai name.
+    const labels = r => [recipeLabel(r), window.translateText?.(recipeLabel(r))].filter(Boolean).map(l => l.toLowerCase());
+    let match = recipeIndex.find(r => labels(r).includes(text));
     if (!match) {
-        const partial = recipeIndex.filter(r => recipeLabel(r).toLowerCase().includes(text));
+        const partial = recipeIndex.filter(r => labels(r).some(l => l.includes(text)));
         if (partial.length === 1) match = partial[0];
     }
     if (!match) {

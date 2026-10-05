@@ -4,9 +4,9 @@
 // through every template, this script watches the page and swaps whole English strings for
 // their Thai versions as they appear: text nodes and a few attributes (title, placeholder,
 // aria-label, data-tooltip, data-label, data-tip) are looked up in `TH` exactly, then in
-// `PATTERNS` for strings with numbers or names in them. Anything not listed stays in English.
-// Game names (facilities, items, abilities, Home Coins, RV, environment modes) are left in
-// English on purpose, so they still match what players see in game and in guides.
+// `PATTERNS` for strings with numbers or names in them. Game names (facilities, items,
+// abilities, currencies) come from i18n-names-th.js and are swapped in wherever they appear,
+// including inside the translated sentences. Anything not covered stays in English.
 //
 // The Help and Math modals are long-form and swap their whole body for `TH_HTML` instead.
 // Switching back to English restores every original string, so nothing has to re-render.
@@ -89,7 +89,6 @@
         'No limit': 'ไม่จำกัด',
         'A seasonal event with its own currency, Moonray Wheat, which buys the season\'s seeds. Keeping enough wheat on hand is up to you; plans show how much their seeds use. Season items also earn Harvest Moon Points, which you can rank under Priorities.':
             'กิจกรรมตามฤดูกาลที่มีสกุลเงินของตัวเองคือ Moonray Wheat ใช้ซื้อเมล็ดพันธุ์ประจำฤดูกาล คุณต้องเตรียม wheat ให้พอเอง แผนจะแสดงว่าเมล็ดใช้ไปเท่าไร ไอเท็มประจำฤดูกาลยังให้ Harvest Moon Points ซึ่งจัดลำดับได้ในหัวข้อลำดับความสำคัญ',
-        'Recipe Notes': 'Recipe Notes (สูตรพิเศษ)',
         'Recipes': 'สูตร',
         'Special recipes': 'สูตรพิเศษ',
         'These take a rare currency to unlock. Plans only use the ones you tick.':
@@ -264,7 +263,6 @@
         'Environment': 'สภาพแวดล้อม',
         'Aniimo Materials': 'วัตถุดิบ Aniimo',
         'Materials Processing': 'การแปรรูปวัตถุดิบ',
-        'Leisure': 'สันทนาการ',
         'Planting seeds and gathering': 'ปลูกเมล็ดและเก็บเกี่ยว',
         'Reclaiming land and mining': 'บุกเบิกที่ดินและทำเหมือง',
         'Processing with wind': 'แปรรูปด้วยพลังลม',
@@ -300,21 +298,32 @@
         'Cancelled by a newer calculation': 'ถูกยกเลิกเพราะมีการคำนวณใหม่',
         'The planner stopped': 'ตัววางแผนหยุดทำงาน',
 
+        // Recipe reference table and tooltips
+        'Reclaiming': 'บุกเบิกดิน',
+        'Sowing': 'หว่านเมล็ด',
+        'Watering': 'รดน้ำ',
+        'Reaping': 'เก็บเกี่ยว',
+        'Collecting': 'เก็บผลผลิต',
+        'Logging': 'ตัดไม้',
+        'Not yet checked in game.': 'ยังไม่ได้ตรวจสอบในเกม',
+        'Not yet checked in game': 'ยังไม่ได้ตรวจสอบในเกม',
+        "Can't make this? Skip it and plan again": 'ทำสิ่งนี้ไม่ได้? ข้ามแล้ววางแผนใหม่',
+        'How many you have that are alike': 'จำนวนตัวที่เหมือนกันที่คุณมี',
+        'Remove this level': 'ลบระดับนี้',
+        'Remove': 'ลบ',
+        'Stop skipping': 'เลิกข้าม',
+        'Takes a rare currency to unlock': 'ต้องใช้สกุลเงินหายากในการปลดล็อก',
+        "The lowest ability level that can make this, and the best Aniimo for it: level 4, the top, with the facility's personality (+20% speed). For crops and trees, the ability each job needs, in order.":
+            'ระดับความสามารถต่ำสุดที่ผลิตสิ่งนี้ได้ และ Aniimo ที่ดีที่สุดสำหรับมัน: ระดับ 4 ซึ่งสูงสุด พร้อมนิสัยที่ตรงกับสิ่งอำนวยการผลิต (เร็วขึ้น 20%) สำหรับพืชและต้นไม้ จะแสดงความสามารถที่แต่ละงานต้องใช้ตามลำดับ',
+        'Grow time for crops and trees, before watering takes an eighth off it twice. Everything else lists workload: at 100% Efficiency a processor gets through one workload a second, a gathering facility 1.25 on a level-2 recipe and 1.5 on a level-3 one. An Aniimo at the level a recipe needs works at 100%; higher levels are faster, up to level 4 (at a processor, 300% one level above, then +100% per level; at gathering facilities each level adds half a workload a second, reading as +50% on a level-1 recipe, +40% on a level-2 one and +33% on a level-3 one).':
+            'เวลาเติบโตของพืชและต้นไม้ ก่อนการรดน้ำสองครั้งที่ลดเวลาครั้งละหนึ่งในแปด อย่างอื่นแสดงเป็นปริมาณงาน (workload): ที่ประสิทธิภาพ 100% เครื่องแปรรูปทำได้หนึ่ง workload ต่อวินาที สิ่งอำนวยการผลิตประเภทเก็บรวบรวมทำได้ 1.25 สำหรับสูตรระดับ 2 และ 1.5 สำหรับสูตรระดับ 3 Aniimo ที่มีระดับเท่าที่สูตรต้องการทำงานที่ 100% ระดับสูงกว่าจะเร็วขึ้น สูงสุดถึงระดับ 4 (ที่เครื่องแปรรูป สูงกว่าหนึ่งระดับคือ 300% แล้วเพิ่ม 100% ต่อระดับ ที่สิ่งอำนวยการผลิตประเภทเก็บรวบรวม แต่ละระดับเพิ่มครึ่ง workload ต่อวินาที เท่ากับ +50% สำหรับสูตรระดับ 1, +40% สำหรับสูตรระดับ 2 และ +33% สำหรับสูตรระดับ 3)',
+
         // Long explanations in index.html
         "Every finished batch is carried to the Storage Unit (SU), so each facility is placed by its trips per hour times its straight-line distance to it: the busiest sit closest, idle ones go to the edge. Each environment building's plots can go anywhere its coverage still reaches them, so they sit on its Storage Unit side. No covered plot reaches another building's coverage, and a crop that needs an environment but is grown without one stays out of all of it, so every crop keeps the temperature the plan gave it. Crops that need no environment can go anywhere. Everything stays within the plots your RV level has open (each 20 by 15 tiles; in Advanced mode, the lowest RV level that allows what you entered), and the Storage Unit goes wherever the walking comes out least. Hover or tap a facility for its trips and distance. The diagram plays the homeland out in sped-up game time from when everything is set up: each finished batch goes to the Storage Unit (carrying takes no time here), and a recipe starts only once what it takes is there. A ring on each facility shows its batch, amber while it waits for materials. This is a close-packed arrangement worked out step by step, not a proven shortest one.":
             'ผลผลิตทุกรอบที่เสร็จจะถูกขนไปที่ Storage Unit (SU) สิ่งอำนวยการผลิตแต่ละอย่างจึงถูกวางตามจำนวนเที่ยวต่อชั่วโมงคูณระยะทางตรงไปยัง SU: อันที่ยุ่งที่สุดอยู่ใกล้ที่สุด อันที่ว่างอยู่ริมขอบ แปลงของอาคารสภาพแวดล้อมแต่ละหลังวางได้ทุกที่ที่ยังอยู่ในพื้นที่ครอบคลุม จึงอยู่ฝั่งที่ใกล้ Storage Unit แปลงที่ถูกครอบคลุมจะไม่ไปอยู่ในพื้นที่ของอาคารอื่น และพืชที่ต้องการสภาพแวดล้อมแต่ปลูกโดยไม่มีอาคารจะอยู่นอกพื้นที่ครอบคลุมทั้งหมด พืชทุกต้นจึงได้อุณหภูมิตามที่แผนกำหนด พืชที่ไม่ต้องการสภาพแวดล้อมวางที่ไหนก็ได้ ทุกอย่างอยู่ในแปลงที่ระดับ RV ของคุณเปิดไว้ (แปลงละ 20×15 ช่อง ในแบบละเอียดใช้ RV ระดับต่ำสุดที่รองรับสิ่งที่คุณกรอก) และ Storage Unit จะอยู่ตรงที่เดินน้อยที่สุด ชี้หรือแตะสิ่งอำนวยการผลิตเพื่อดูจำนวนเที่ยวและระยะทาง แผนภาพจะจำลอง homeland ด้วยเวลาในเกมแบบเร่งความเร็ว นับจากตอนตั้งค่าทุกอย่างเสร็จ: ผลผลิตแต่ละรอบไปที่ Storage Unit (การขนไม่นับเวลา) และสูตรจะเริ่มเมื่อมีวัตถุดิบครบแล้ว วงแหวนบนสิ่งอำนวยการผลิตแสดงความคืบหน้าของรอบ เป็นสีเหลืองอำพันเมื่อรอวัตถุดิบ นี่คือการจัดวางแบบชิดกันที่คำนวณทีละขั้น ไม่ใช่ผังที่พิสูจน์แล้วว่าเดินสั้นที่สุด',
         'An Aniimo can take any job needing its ability at or below its level while it has hours to spare, as long as no two of its facilities want opposite personalities. It has four personalities, one from each pair, shown as letters over its portrait: Instinctive or Energetic (I/E), Nimble or Practical (N/S), Faithful or Tenacious (F/T), Playful or Judicious (P/J). Facilities with a resident Aniimo (Sandcastle, Dewy House and the like) need one each, and so does each Heat Furnace (Fire), Cooling Unit (Ice) and Sunlamp (Light) in use. With My Aniimo, Farmland and Woodland jobs only need someone able to do each; they\'re quick, so they aren\'t counted against anyone\'s hours. Not yet checked in game: each recipe\'s minimum ability level, the Farmland and Woodland jobs, and whether an environment building\'s Aniimo level or personality matters.':
             'Aniimo หนึ่งตัวรับงานใดก็ได้ที่ต้องการความสามารถของมันในระดับเท่ากับหรือต่ำกว่าระดับของมัน ตราบที่ยังมีชั่วโมงว่าง และสิ่งอำนวยการผลิตสองแห่งของมันไม่ต้องการนิสัยตรงข้ามกัน Aniimo มีนิสัยสี่อย่าง คู่ละหนึ่ง แสดงเป็นตัวอักษรบนรูป: Instinctive หรือ Energetic (I/E), Nimble หรือ Practical (N/S), Faithful หรือ Tenacious (F/T), Playful หรือ Judicious (P/J) สิ่งอำนวยการผลิตที่มี Aniimo ประจำ (Sandcastle, Dewy House และอื่น ๆ) ต้องใช้แห่งละหนึ่งตัว เช่นเดียวกับ Heat Furnace (Fire), Cooling Unit (Ice) และ Sunlamp (Light) ทุกเครื่องที่ใช้ เมื่อใช้ Aniimo ของฉัน งาน Farmland และ Woodland ต้องการแค่ตัวที่ทำงานนั้นได้ เพราะใช้เวลาสั้น จึงไม่นับรวมในชั่วโมงทำงาน ยังไม่ได้ตรวจสอบในเกม: ระดับความสามารถขั้นต่ำของแต่ละสูตร งาน Farmland และ Woodland และระดับหรือนิสัยของ Aniimo ที่อาคารสภาพแวดล้อมมีผลหรือไม่',
 
-        // Personalities
-        'Instinctive': 'Instinctive (สัญชาตญาณ)',
-        'Energetic': 'Energetic (กระตือรือร้น)',
-        'Nimble': 'Nimble (คล่องแคล่ว)',
-        'Practical': 'Practical (ปฏิบัติจริง)',
-        'Faithful': 'Faithful (ซื่อสัตย์)',
-        'Tenacious': 'Tenacious (มุ่งมั่น)',
-        'Playful': 'Playful (ขี้เล่น)',
-        'Judicious': 'Judicious (รอบคอบ)',
     };
 
     const NUM = '([\\d.,]+)';
@@ -327,7 +336,7 @@
         [new RegExp(`^RV ${NUM} costs$`), 'ค่าใช้จ่ายของ RV $1'],
         [new RegExp(`^Profit until RV ${NUM}$`), 'กำไรจนถึง RV $1'],
         [/^in (.+)$/, 'ในอีก $1'],
-        [/^Target (.+)$/, '$1 เป้าหมาย'],
+        [/^Target (.+)$/, 'เป้าหมาย $1'],
         [/^Current (.+)$/, '$1 ปัจจุบัน'],
         [/^(.+) produced$/, '$1 ที่ผลิตได้'],
         [/^Seeds per (second|minute|hour|day): one per planting, for every Farmland and Woodland crop in the plan\.$/,
@@ -352,6 +361,18 @@
             (m, trips, tiles, plots, rv, rest) => `ขนไป Storage Unit ${trips} เที่ยว/ชั่วโมง เฉลี่ยเที่ยวละ ${tiles} ช่อง ในแปลงที่เปิดแล้ว ${plots} แปลงที่ RV ${rv}${rest}`],
         [/^(.+) trips\/hour · (.+) tiles from storage$/, '$1 เที่ยว/ชั่วโมง · ห่างจากที่เก็บ $2 ช่อง'],
         [/^(.+) trips\/hour$/, '$1 เที่ยว/ชั่วโมง'],
+        [/^Unlock (.+)$/, 'ปลดล็อก $1'],
+        [new RegExp(`^Plant cost: ${NUM}$`), 'ค่าปลูก: $1'],
+        [new RegExp(`^${NUM} workload$`), '$1 workload'],
+        [/^best Lv\.(\d+)(?: (.+))?$/, (m, lv, who) => `ดีที่สุด Lv.${lv}${who ? ' ' + who : ''}`],
+        [/^(.+) ×(\d+)$/, (m, a, n) => `${translate(a) || a} ×${n}`],
+        [/^(.+) only$/, 'เฉพาะ $1'],
+        [/^Recipe Note: (.+)$/, 'บันทึกสูตร: $1'],
+        [new RegExp(`^Checking ${NUM} of ${NUM}…(.*)$`), (m, a, b, rest) => `กำลังตรวจสอบ ${a} จาก ${b}…${more(rest)}`],
+        [/^Nothing left to unlock or upgrade\.(.*)$/, (m, rest) => `ไม่มีอะไรเหลือให้ปลดล็อกหรืออัปเกรดแล้ว${more(rest)}`],
+        [new RegExp(`^No improvements found \\(${NUM} checked\\)\\.(.*)$`), (m, n, rest) => `ไม่พบสิ่งที่ช่วยให้ดีขึ้น (ตรวจแล้ว ${n} รายการ)${more(rest)}`],
+        [new RegExp(`^Ranked by (.+)\\. ${NUM} of ${NUM} help\\.(.*)$`), (m, by, a, b, rest) =>
+            `เรียงตาม${by.replace(/^level-up time/, 'เวลาเลื่อนระดับ').replace(/, then /, ' แล้วตามด้วย ')} ช่วยได้ ${a} จาก ${b} รายการ${more(rest)}`],
         [/^Used for (.+); the rest sells directly$/, 'ใช้ทำ $1 ส่วนที่เหลือขายโดยตรง'],
         [/^Used for (.+)$/, 'ใช้ทำ $1'],
         [/^Unskip (.+)$/, 'เลิกข้าม $1'],
@@ -365,13 +386,60 @@
         [/^(.+) level$/, 'ระดับ $1'],
     ];
 
+    const NAMES = window.ANIIMAX_TH_NAMES || {};
+    const PREFIXES = window.ANIIMAX_TH_NAME_PREFIXES || {};
+    const has = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
+    const escapeRe = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    // Thai for one game name, including "Quick"/"Premium"/"Advanced" variants of a named item.
+    function nameTh(name) {
+        if (has(NAMES, name)) return NAMES[name];
+        const m = name.match(/^(\S+) (.+)$/);
+        if (m && has(PREFIXES, m[1])) {
+            const base = nameTh(m[2]);
+            if (base) return PREFIXES[m[1]](base);
+        }
+        return null;
+    }
+
+    // Every game name in `text` swapped for its Thai, longest names first so "Moonray Wheat"
+    // wins over "Wheat".
+    const NAME_RE = new RegExp(
+        `(?<![A-Za-z])(?:(${Object.keys(PREFIXES).map(escapeRe).join('|')}) )?(${Object.keys(NAMES)
+            .sort((a, b) => b.length - a.length).map(escapeRe).join('|')})(?![A-Za-z])`, 'g');
+
+    const RATE_UNITS = { sec: 'วินาที', min: 'นาที', hour: 'ชั่วโมง', day: 'วัน' };
+
+    function replaceNames(text) {
+        if (!Object.keys(NAMES).length) return text;
+        return text
+            .replace(NAME_RE, (whole, prefix, name) =>
+                prefix && has(PREFIXES, prefix) ? PREFIXES[prefix](NAMES[name]) : NAMES[name])
+            .replace(/\/(sec|min|hour|day)\b/g, (m, unit) => '/' + RATE_UNITS[unit]);
+    }
+
+    // Words that may stay in Latin letters in Thai text: units and the game's own abbreviations.
+    const KEEP_WORDS = /\b(?:RV|workload|Lv|SU|EXP|Aniimo|Aniipods?|Pro|Mega|ms|[hmds]|HiGHS)\b/g;
+
+    // The translated tail of a sentence app.js joins onto another, e.g. " Within RV 9 limits."
+    function more(rest) {
+        const tail = (rest || '').trim();
+        return tail ? ' ' + (translate(tail) || tail) : '';
+    }
+
     function translate(text) {
         const key = text.replace(/\s+/g, ' ').trim();
         if (!key) return null;
-        if (Object.prototype.hasOwnProperty.call(TH, key)) return TH[key];
+        if (has(TH, key)) return replaceNames(TH[key]);
+        const name = nameTh(key);
+        if (name) return name;
         for (const [re, rep] of PATTERNS) {
-            if (re.test(key)) return key.replace(re, rep);
+            if (re.test(key)) return replaceNames(key.replace(re, rep));
         }
+        // Names, numbers and symbols only, e.g. "Wheat (Farmland)", "Heat Furnace 2" or
+        // "Lv.1: Quick Wheat": swap the names, as long as no other English is left over.
+        const swapped = replaceNames(key);
+        if (swapped !== key && !/[A-Za-z]{2,}/.test(swapped.replace(KEEP_WORDS, ''))) return swapped;
         return null;
     }
 
@@ -432,6 +500,22 @@
         if (current !== t) el.setAttribute(name, t);
     }
 
+    // A datalist option shows its value; in Thai it also gets a label, so the list reads in Thai
+    // while picking still fills in the English value the app looks up.
+    const optionLabels = new WeakSet();
+
+    function applyOptionLabel(el) {
+        if (el.tagName !== 'OPTION' || !el.parentElement || el.parentElement.tagName !== 'DATALIST') return;
+        const t = lang === 'th' ? translate(el.value) : null;
+        if (t) {
+            el.label = t;
+            optionLabels.add(el);
+        } else if (optionLabels.has(el)) {
+            el.removeAttribute('label');
+            optionLabels.delete(el);
+        }
+    }
+
     function applyTree(root) {
         if (root.nodeType === Node.TEXT_NODE) {
             applyText(root);
@@ -439,11 +523,15 @@
         }
         if (root.nodeType !== Node.ELEMENT_NODE) return;
         ATTRS.forEach(name => applyAttr(root, name));
+        applyOptionLabel(root);
         const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
         let node = walker.nextNode();
         while (node) {
             if (node.nodeType === Node.TEXT_NODE) applyText(node);
-            else ATTRS.forEach(name => applyAttr(node, name));
+            else {
+                ATTRS.forEach(name => applyAttr(node, name));
+                applyOptionLabel(node);
+            }
             node = walker.nextNode();
         }
     }
@@ -456,7 +544,7 @@
         document.querySelectorAll('.modal-body[data-i18n-swap]').forEach(body => {
             const key = body.dataset.i18nSwap;
             if (!(key in enHtml)) enHtml[key] = body.innerHTML;
-            const html = lang === 'th' && TH_HTML[key] ? TH_HTML[key] : enHtml[key];
+            const html = lang === 'th' && TH_HTML[key] ? replaceNames(TH_HTML[key]) : enHtml[key];
             if (body.dataset.i18nLang === lang) return;
             if (window.MathJax && MathJax.typesetClear) MathJax.typesetClear([body]);
             body.innerHTML = html;
@@ -496,6 +584,9 @@
     };
 
     window.currentLanguage = () => lang;
+
+    // The Thai for an English string the page shows, or null (also null in English).
+    window.translateText = text => (lang === 'th' && text ? translate(text) : null);
 
     function start() {
         applyAll();
@@ -546,7 +637,7 @@
                     <li><strong>ตั้งเป้าหมาย</strong>: เมื่อใช้ลำดับความสำคัญ จะบอกว่าใช้เวลานานเท่าไรจึงถึงจำนวนเป้าหมายของ Home Coins หรือลำดับความสำคัญที่เปิดอยู่ และตอนนั้นคุณจะมีอะไรเพิ่มอีกบ้าง</li>
                 </ul>
                 <h3>ภาษา</h3>
-                <p>กดปุ่ม "ไทย" / "english" ที่มุมบนเพื่อสลับภาษา ชื่อไอเท็ม สิ่งอำนวยการผลิต และความสามารถจะคงเป็นภาษาอังกฤษตามชื่อในเกม</p>
+                <p>กดปุ่ม "ไทย" / "english" ที่มุมบนเพื่อสลับภาษา ชื่อในเกม (สิ่งอำนวยการผลิต ไอเท็ม ความสามารถ) เป็นชื่อแปลโดยแฟน อาจไม่ตรงกับชื่อภาษาไทยในเกมทุกคำ</p>
 `,
         math: `
                 <h3>แบบจำลอง</h3>

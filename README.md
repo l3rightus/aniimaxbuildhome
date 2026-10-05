@@ -11,11 +11,13 @@ Updated for the full release, with a joint LP-based facility-allocation engine f
 **[Launch Aniimax Web App](https://l3rightus.github.io/aniimaxbuildhome/)** - No installation required!
 
 - Source code: **[github.com/l3rightus/aniimaxbuildhome](https://github.com/l3rightus/aniimaxbuildhome)** (forked from [ae-bii/aniimax](https://github.com/ae-bii/aniimax))
-- **ภาษาไทย / Thai:** the web app is available in English and Thai. Press **ไทย** in the top-right corner to switch (the choice is remembered; a browser set to Thai opens in Thai). Game names such as facilities, items and abilities stay in English so they match the game.
+- **ภาษาไทย / Thai:** the web app is available in English and Thai. Press **ไทย** in the top-right corner to switch (the choice is remembered; a browser set to Thai opens in Thai). In Thai, game names (facilities, items, abilities, personalities, currencies) are shown in Thai too. These are fan translations kept in [`web/i18n-names-th.js`](web/i18n-names-th.js); edit that file to match the game's own Thai names.
 
 ### วิธีเปิดใช้งาน (ภาษาไทย)
 
 เปิด **[เว็บแอป Aniimax](https://l3rightus.github.io/aniimaxbuildhome/)** แล้วกดปุ่ม **ไทย** ที่มุมขวาบนเพื่อเปลี่ยนเป็นภาษาไทย ปุ่ม **github** ที่มุมขวาบนและท้ายหน้าเว็บจะพาไปยังหน้า GitHub ของโปรเจกต์นี้
+
+ชื่อในเกม (สิ่งอำนวยการผลิต ไอเท็ม ความสามารถ นิสัย สกุลเงิน) แสดงเป็นภาษาไทยด้วย ชื่อเหล่านี้แปลโดยแฟน ยังไม่ใช่ชื่อทางการของเกม ถ้าชื่อไหนไม่ตรงกับในเกม แก้ได้ที่ไฟล์ [`web/i18n-names-th.js`](web/i18n-names-th.js) โดยเปลี่ยนเฉพาะคำภาษาไทยทางขวา
 
 ## Features
 
